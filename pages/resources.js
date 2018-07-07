@@ -29,7 +29,7 @@ Resources.getInitialProps = async function() {
 	const apiBaseUrl = serverRuntimeConfig.apiBaseUrl
       		? `${serverBaseUrl}/api`
       		: publicRuntimeConfig.apiBaseUrl;
-	
+	console.log(`${apiBaseUrl}/resources`)
 	const res = await fetch(`${apiBaseUrl}/resources`)
         const data = await list.json();
 	    
