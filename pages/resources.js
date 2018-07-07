@@ -2,6 +2,9 @@ import Layout from '../components/Layout'
 import Link from 'next/link'
 import fetch from 'isomorphic-unfetch'
 
+import getConfig from 'next/config';
+const {serverRuntimeConfig, publicRuntimeConfig} = getConfig();
+
 const listStyle = {
     lineHeight: 2
 }
@@ -22,11 +25,18 @@ const Resources = (props) => (
 
 Resources.getInitialProps = async function() {  
     try {
+	    
+	const apiBaseUrl = serverRuntimeConfig.apiBaseUrl
+      		? `${serverBaseUrl}/api`
+      		: publicRuntimeConfig.apiBaseUrl;
+	    
         const list = await fetch('http://localhost:3000/api/resources');
         const data = await list.json();
+	    
         return {
             resources: data
         }
+	    
     } catch(e) {
         console.log(e);    
     }    
