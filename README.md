@@ -1,2 +1,2 @@
 # nextjs-with-db
-Code for live example regarding api erro
+Code for live example regarding api fetch error
